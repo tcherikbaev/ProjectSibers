@@ -1,0 +1,73 @@
+﻿@model IEnumerable<ProjectSibers.Models.Task>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Все Задачи</h1>
+
+<p>
+    <a asp-action="Create">Добавить новую задачу</a>
+</p>
+
+
+<form asp-controller="Tasks" asp-action="Index">
+    <p>
+        Наименование/Комментарий : <input type="text" name="SearchString">
+        <input type="submit" value="Фильтр" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Name)*@
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.Name)</a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comments)
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["Priority"]">@Html.DisplayNameFor(model => model.Priority)</a>
+                @*@Html.DisplayNameFor(model => model.Priority)*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+            
+                <a asp-action="Index" class="btn btn-success"> Возврат к первоначальному списку</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Priority)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TaskID">Редактировать</a> |
+                <a asp-action="Details" asp-route-id="@item.TaskID">Данные о</a> |
+                <a asp-action="Delete" asp-route-id="@item.TaskID">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

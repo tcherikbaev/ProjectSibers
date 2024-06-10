@@ -1,0 +1,94 @@
+﻿@model IEnumerable<ProjectSibers.Models.Project>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Проекты</h1>
+<p>
+    <a asp-action="Create">Добавить новую запись</a>
+</p>
+
+@*форма для вывовда списка Проектов по выбранному периоду*@
+@using (Html.BeginForm(FormMethod.Post))
+{<div class="layer2">
+    <input type="date" name="Date_start" value="@ViewBag.Date_start" />
+    <input type="date" name="Date_finish" value="@ViewBag.Date_finish">
+    <input type="submit" value="Фильтр по Дате" class="btn btn-secondary btn-sm" />|
+    <a asp-action="Index" class="btn btn-success"> Возврат к первоначальному списку</a>
+
+</div>
+}
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @*@Html.DisplayNameFor(model => model.Name)*@
+                
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NamesParameter"]">@Html.DisplayNameFor(model => model.Name)</a>
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Customer)*@
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["Customer"]">@Html.DisplayNameFor(model => model.Customer)</a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Executor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.beginDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.finishDate)
+            </th>
+            <th>
+                @*<a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.Priority)</a>*@
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]"><span class="glyphicon glyphicon-sort">Priority</span></a>
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.Priority)
+        </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Executor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.beginDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.finishDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Priority)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProjectID">Редактировать</a> |
+                <a asp-action="Details" asp-route-id="@item.ProjectID">Данные о</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProjectID">Удалить</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

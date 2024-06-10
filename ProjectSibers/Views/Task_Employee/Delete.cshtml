@@ -1,0 +1,32 @@
+﻿@model ProjectSibers.Models.Task_Employee
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<h3>Вы уверены, что хотите удалить это?</h3>
+<div>
+    <h4>Task_Employee</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Task)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Task.Name)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Employee)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Employee.Name)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Te_ID" />
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-action="Index">Bозврат к общему списку</a>
+    </form>
+</div>

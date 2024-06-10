@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Админ Панель </h1>
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="form-group row">
+                            <div class="col-lg-12" style="text-align: center;font-size:30px;">
+                                <a class="nav-link hamburger--vortex" title="Authorized Email">Добро пожаловать @*@User.Identity.Name !*@</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="text-align: center; font-size:30px;">
+                            @Html.ActionLink("Должности", "Index", "Doljnosts")
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12" style="text-align: center; font-size:30px;">
+                            @Html.ActionLink("Сотрудники", "Index", "Employees")
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12" style="text-align: center; font-size:30px;">
+                            @Html.ActionLink("Проекты", "Index", "Projects")
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12" style="text-align: center; font-size:30px;">
+                            @Html.ActionLink("Сотрудник_Проект", "Index", "Employee_Project")
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12" style="text-align: center;font-size:30px;">
+                            @Html.ActionLink("Задачи", "Index", "Tasks")
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12" style="text-align: center;font-size:30px;">
+                            @Html.ActionLink("Проект_Задача", "Index", "Project_Task")
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12" style="text-align: center; font-size:30px;">
+                            @Html.ActionLink("Задача_Сотрудник", "Index", "Task_Employee")
+                        </div>
+                    </div>
+                    @*<div class="form-group row">
+                        <div class="col-lg-12" style="text-align: center;font-size:30px;">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logout_form">Выход</a>
+                        </div>
+                    </div>*@
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ProjectSibers.Models.Project_Task>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Проект_Задачи</h1>
+
+<p>
+    <a asp-action="Create">Добавить новую запись</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Project)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Task)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Task.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Pt_ID">Редактировать</a> |
+                <a asp-action="Details" asp-route-id="@item.Pt_ID">Данные o</a> |
+                <a asp-action="Delete" asp-route-id="@item.Pt_ID">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
